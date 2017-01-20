@@ -1,0 +1,3 @@
+使用requests 模块实现知乎模拟登录
+使用urllib2 模块实现知乎模拟登录
+urllib2_prevent_redirect.py文件 禁止了urllib2请求时自动处理重定向
