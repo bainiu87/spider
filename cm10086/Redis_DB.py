@@ -10,3 +10,5 @@ class redis_db(object):
         else:
             self.redis_connect.set(self.redis_data,"1")
             return True
+
+

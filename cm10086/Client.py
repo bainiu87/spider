@@ -3,12 +3,13 @@ import cm10086_request
 import threading
 from Mysql_DB import mysql_db
 class Client(object):
-    def __init__(self,sumpage):
-        self.sum_page=sumpage
+    def __init__(self,begin_page,over_page):
+        self.over_page=over_page  #结束页数
+        self.begin_page=begin_page #开始页数
         self.numb=-1
         #将页数添加到list中，可以使用定时器，每2秒提取一个
         self.page_list=[]
-        for l in xrange(1,sumpage+1):
+        for l in xrange(self.begin_page,self.over_page+1):
             self.page_list.append(l)
 
     #内含定时器
@@ -17,11 +18,14 @@ class Client(object):
         try:
             page=self.page_list[self.numb]
         except:
-            print "结束"
+            print "game over"
             return
         data=self.get_data(page)
-        into_mysql=mysql_db(data)
-        into_mysql.mysql_insert()
+        if data != False:
+            into_mysql=mysql_db(data,page)
+            into_mysql.mysql_insert()
+        else:
+            print "page request fail"
         # for l in data:
         #     print l["unit"].encode("utf8"), l["title"].encode("utf8"), l["content"].encode("utf8"), l["time"]
         t = threading.Timer(2,self.call_function)
@@ -35,5 +39,5 @@ class Client(object):
         return data
 
 if __name__=="__main__":
-    client=Client(2500)
+    client=Client(1036,2500)
     client.call_function()
