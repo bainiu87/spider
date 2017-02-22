@@ -26,9 +26,7 @@ class Client(object):
             into_mysql.mysql_insert()
         else:
             print "page request fail"
-        # for l in data:
-        #     print l["unit"].encode("utf8"), l["title"].encode("utf8"), l["content"].encode("utf8"), l["time"]
-        t = threading.Timer(2,self.call_function)
+        t = threading.Timer(1,self.call_function)
         t.start()
         t.join()
 
@@ -39,5 +37,5 @@ class Client(object):
         return data
 
 if __name__=="__main__":
-    client=Client(1036,2500)
+    client=Client(1,30)
     client.call_function()
