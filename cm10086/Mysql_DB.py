@@ -14,7 +14,7 @@ class mysql_db(object):
     def mysql_insert(self):
         if len(self.mysql_data) != 0:
             for l in self.mysql_data:
-                sql = "insert into cm1008611 (unit,title,content,time)values('" + l["unit"].encode("utf8") + "','" + l["title"].encode("utf8") + "','" + l["content"] + "','" + l["time"].encode("utf8") + "')"
+                sql = "insert into cm10086 (unit,title,content,time)values('" + l["unit"].encode("utf8") + "','" + l["title"].encode("utf8") + "','" + l["content"] + "','" + l["time"].encode("utf8") + "')"
                 try:
                     self.mysql_cur.execute(sql)
                 except:

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#不使用队列
 import cm10086_request
 import threading
 from Mysql_DB import mysql_db
